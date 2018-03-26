@@ -18,6 +18,7 @@ This is how it works on Azure with the Managed Kubernetes Cluster (AKS):
 * make sure you are logged in to azure with the cli (az login) and that your user has the rights to create resources
 * make sure you have draft,helm installed and configure (not required for the OSBA, but I am using it)
 * follow the instructions on https://docs.microsoft.com/en-us/azure/aks/integrate-azure:
+  * setup your service catalog 
   * install osba
     * helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
     * SERVICE_PRINCIPAL=$(az ad sp create-for-rbac)
@@ -33,6 +34,7 @@ This is how it works on Azure with the Managed Kubernetes Cluster (AKS):
     * curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
 chmod +x ./svcat
  * by now you are good to go...just watch the flic on my youtube channel
+* command I used for creating redis cache instance: svcat provision redis --class azure-rediscache --plan basic -p location=westeurope -p resourceGroup=datalinks
 
 
 ## More info
