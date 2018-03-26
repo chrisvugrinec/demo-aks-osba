@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: voteapp
+  namespace: default
+spec:
+  rules:
+    - host: vote.k8.datalinks.nl
+      http:
+        paths:
+          - backend:
+              serviceName: azure-vote-python
+              servicePort: 80
+            path: /
