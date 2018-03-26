@@ -5,10 +5,10 @@ This demo shows an example of a python app deployed on a Managed Kubernetes clus
 
 This is how it works on Azure with the Managed Kubernetes Cluster (AKS):
 * You will create a service principal on your azure tenant
-* You will install a Service Broker in your Kubernetes cluster that will use your service principal
-* Then you will install a tool that will use the broker in combination with kubectl, this tool is name svcat
-* Install a paas service with the svcat tool, for eg redis with this command: svcat provision redis --class azure-rediscache --plan basic -p location=westeurope -p resourceGroup=datalinks
-* The create a binding to this service, this will create a secret in Kubernetes. This secret can be used by applications (like this voting app) to access the PAAs service
+* You will install and configure the  Service Broker API in your Kubernetes cluster;  this will use your service principal
+* Then you will install a tool that will use the broker in combination with kubectl, this tool is named svcat
+* Install a PAAS service with the svcat tool, for eg REDIS with this command: svcat provision redis --class azure-rediscache --plan basic -p location=westeurope -p resourceGroup=datalinks
+* Then create a binding to this service, this will create a secret in Kubernetes. This secret can be used by applications (like this voting app) to access the PAAs service
 
 
 ## How
