@@ -3,6 +3,14 @@
 The Open Service Broker API is an API designed to make integration between your (micro)services and your paas services effortless.
 This demo shows an example of a python app deployed on a Managed Kubernetes cluster that will use the Redis Paas Service from Azure by using the OSBA.
 
+This is how it works on Azure with the Managed Kubernetes Cluster (AKS):
+* You will create a service principal on your azure tenant
+* You will install a Service Broker in your Kubernetes cluster that will use your service principal
+* Then you will install a tool that will use the broker in combination with kubectl, this tool is name svcat
+* Install a paas service with the svcat tool, for eg redis with this command: svcat provision redis --class azure-rediscache --plan basic -p location=westeurope -p resourceGroup=datalinks
+* The create a binding to this service, this will create a secret in Kubernetes. This secret can be used by applications (like this voting app) to access the PAAs service
+
+
 ## How
 
 * clone this repo
@@ -22,9 +30,13 @@ This demo shows an example of a python app deployed on a Managed Kubernetes clus
     --set azure.tenantId=$AZURE_TENANT_ID \
     --set azure.clientId=$AZURE_CLIENT_ID \
     --set azure.clientSecret=$AZURE_CLIENT_SECRET
+    * curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
+chmod +x ./svcat
+ * by now you are good to go...just watch the flic on my youtube channel
 
 
 ## More info
-* https://www.openservicebrokerapi.org/
-* https://github.com/Azure/open-service-broker-azure
+* osba; https://www.openservicebrokerapi.org/
+* osba on azure; https://github.com/Azure/open-service-broker-azure
+* draft; https://github.com/Azure/draft/
 
